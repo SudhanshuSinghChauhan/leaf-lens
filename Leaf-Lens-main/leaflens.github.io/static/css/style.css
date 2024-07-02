@@ -1,0 +1,90 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.bg{
+    background-color:#e9f6e9;
+}
+
+.banner{
+    
+    background-image: url(../images/background.jpg);
+    background-size: cover;
+    width: 100%;
+    height: 600px;
+}
+/* .a{
+    margin-left: auto;
+} */
+#preview {
+    width: 300px;
+    height: 300px;
+ }
+
+.container h1{
+    font-size: 80px;
+    font-weight: 500px;
+}
+
+.left-col{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.animation-container {
+    animation: fly-in 1s ease-out both;
+    animation-delay: 1s; /* Delay the animation to start after 1 second */
+    opacity: 0; /* Initially hide the element */
+    transform: translateX(-100%); /* Move the element off-screen to the left */
+  }
+
+  @keyframes fly-in {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }}
+
+    .animation-container {
+        animation: fly-in 1s ease-out both;
+      }
+  
+      /* Background color for "How to Use" section */
+      #how-to-use {
+        background-color: #f0f0f0;
+        padding: 50px 0;
+      }
+  
+      /* Custom font styles */
+      h1, h2, h3 {
+        font-family: 'Arial', sans-serif; /* Change the font family here */
+      }
+      
+      /* Stylish font for h1 */
+      h1 {
+        font-family: 'Pacifico', cursive; /* Change to your stylish font */
+        font-size: 36px; /* Adjust the font size as needed */
+      }
+      
+      /* Stylish font for h2 */
+      h2 {
+        font-family: 'Lobster', cursive; /* Change to your stylish font */
+        font-size: 28px; /* Adjust the font size as needed */
+      }
+      
+      /* Stylish font for h3 */
+      h3 {
+        font-family: 'Montserrat', sans-serif; /* Change to your stylish font */
+        font-size: 24px; /* Adjust the font size as needed */
+      }
+      
+      /* Stylish font for p */
+      p {
+        font-family: 'Open Sans', sans-serif; /* Change to your stylish font */
+        font-size: 18px; /* Adjust the font size as needed */
+      }

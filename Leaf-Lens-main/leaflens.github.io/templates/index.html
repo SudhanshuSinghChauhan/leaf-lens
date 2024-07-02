@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../static/css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+  
+  <div class="banner d-flex flex-column text-center">
+
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand text-light mx-2" href="#">LEAFLENS</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav text-light ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active text-light" aria-current="page" href="#a">UPLOAD IMAGE</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#b">VIDEO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#c">ABOUT LEAF LENS</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link text-light" href="#d">HOW TO USE</a>
+                  </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- image input -->
+    <div class="container d-flex flex-column align-items-center justify-content-center h-100 " >
+        <h1 class="text-light"> LeafLens</h1>
+        <h3 class="text-light"> <span id="typed-text"></span></h3>
+
+
+        <!-- <h2 class="text-light">Please upload your image</h2>
+        <input type="file" class="text-light" accept="image/*" onchange="previewImage(event)">
+        <br>
+        <img id="preview" class="text-light" alt="Preview Image"> -->
+    </div>
+
+</div>
+
+
+
+<div class="container-fluid d-flex justify-content-center align-items-center vh-110 bg" id="a">
+  <div class="row mt-5">
+    <div class="animation-container p-0 col-md-6 text-center flex-row">
+      <h2 class="mt-5 mb-4" style="white-space: nowrap;">UPLOAD YOUR IMAGE HERE</h2>
+      <form id="imageForm" action="/your_ml_model_endpoint" method="post" enctype="multipart/form-data">
+        <input type="file" class="mb-4" name="file" accept="image/*" onchange="previewImage(event)">
+        <img id="preview" class="mb-5" alt="Preview Image"> <p>{{ result }}</p>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+<section class="container-fluid d-flex justify-content-center align-items-center vh-100 bg-secondary" id="b">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="text-light">Watch LeafLens in Action</h2>
+      <p class="text-light">Check out our video to see how LeafLens can help you identify plants with ease.</p>
+    </div>
+    <div class="col-md-6">
+      
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/rUMi4oxBdGk" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- about leaf lens -->
+  <div class="container-fluid d-flex justify-content-center align-items-center h-100" id="c">
+    <div class="row">
+      <div class="col-md-6">
+          <h1 class="text-center">About LeafLens</h1>
+            <p>Welcome to LeafLens, your ultimate plant image expert. LeafLens is a cutting-edge project designed to make plant identification and exploration effortlessly accessible. Simply upload an image of a plant, and our advanced machine learning model will work its magic, providing you with detailed information about the plant's species, characteristics, habitat, and care instructions. Whether you're a botany enthusiast, a student, or a gardening aficionado, LeafLens is your go-to resource for expanding your plant knowledge. Try LeafLens today and unlock the world of botanical discovery with ease.</p>
+        </div>
+        <div class="col-md-6">
+            <div class="d-flex align-items-stretch">
+                <img src="../static/images/plant-image-taking.jpg" class="img-fluid" alt="Plant Image">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- how to use -->
+<section id="how-to-use" class="bg-light py-5" >
+  <div class="container">
+    <h1 class="text-center" id="d">How to Use</h1>
+    <div class="row">
+      <div class="col-md-6">
+        <img src="../static/images/plant-image-taking2.jpeg" alt="Sample Image" class="img-fluid">
+      </div>
+      <div class="col-md-6">
+        <p class="lead">
+          Using LeafLens is a breeze. Begin by uploading an image of the plant you want to identify, ensuring it's well-lit and captures the entire plant. Our advanced machine learning model will swiftly process the image, and within moments, you'll receive a comprehensive report detailing the plant's species, characteristics, habitat, and care instructions. Dive deeper by exploring related species and our extensive plant database. Share your findings with fellow enthusiasts, and don't hesitate to use LeafLens as your go-to tool for all your botanical inquiries. It's a user-friendly and educational experience, suitable for both novices and experts in the world of plants.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+  <script>
+    function previewImage(event) {
+      var input = event.target;
+      var image = document.getElementById('preview');
+      var imageText = document.getElementById('imageText');
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          image.src = e.target.result;
+          image.style.display = 'block';
+          imageText.style.display = 'none';
+        }
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+    
+  </script>
+
+  
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var typed = new Typed("#typed-text", {
+      strings: [
+        'Your ultimate plant image expert.',
+        'Discover plant species with ease.',
+        'Get detailed plant information.',
+        'Unlock the world of botanical discovery.'
+      ],
+      typeSpeed: 50,
+      backSpeed: 25,
+      backDelay: 2000,
+      startDelay: 1000,
+      loop: true
+    });
+
+    window.addEventListener("scroll", function() {
+    const animationContainer = document.querySelector(".animation-container");
+    const scrollPosition = window.scrollY + window.innerHeight;
+
+    if (animationContainer.offsetTop < scrollPosition) {
+      animationContainer.style.animation = "fly-in 1s ease-out both";
+    }
+  });
+  });
+</script>
+<script>
+  // JavaScript to trigger the animation when scrolling down
+  window.addEventListener("scroll", function() {
+    const animationContainer = document.querySelector(".animation-container");
+    const scrollPosition = window.scrollY + window.innerHeight;
+
+    if (animationContainer.offsetTop < scrollPosition) {
+      animationContainer.style.animation = "fly-in 1s ease-out both";
+    }
+  });
+</script>
+
+<script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
